@@ -1,8 +1,8 @@
-class Note
-
   def interactive_menu
-    print_menu
-    process
+    loop do
+     print_menu
+     process(STDIN.gets.chomp)
+   end
   end
 
   def print_menu
@@ -11,8 +11,6 @@ class Note
     puts "3. Pick a note"
     puts "4. Quit"
   end
-
-
 
   def process(selection)
     case selection
@@ -27,7 +25,6 @@ class Note
     end
   end
 
-
   def input_note
     @notes = []
     puts "Enter title"
@@ -39,18 +36,17 @@ class Note
     @notes << {
       title: @title, body: @body
     }
-    @notes
   end
 
   def list_note
     @notes.each do |note|
-      puts "#{note[:title]}: #{note[:body]}"
+      puts "Title: #{note[:title]}"
+      puts "Body: #{note[:body]}"
     end
   end
 
-
   def pick_note
-    "Pick note"
+    
   end
+
 interactive_menu
-end
